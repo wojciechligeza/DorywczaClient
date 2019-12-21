@@ -1,5 +1,6 @@
 export interface ICategory {
-    CategoryId: number;
-    TypeOfJob: string;
-    Workplace: string;
+    categoryId: number;
+    typeOfJob: string;
+    workplace: string;
+    jobOffers: any;
 }
