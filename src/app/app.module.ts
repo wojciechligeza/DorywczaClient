@@ -9,22 +9,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CategoriesComponent } from './components/categories/categories.component';
+import { JobOffersComponent } from './components/job-offers/job-offers.component';
 
 // services
 import { CategoryService } from './services/category.service';
+import { JobOffersService } from './services/job-offers.service';
 
 // AngularMaterial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatCardModule } from '@angular/material/card';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    JobOffersComponent
   ],
   imports: [
     BrowserModule,
@@ -32,9 +33,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     HttpClientModule,
     // AngularMaterial
     BrowserAnimationsModule,
-    MatCardModule, MatButtonModule, MatToolbarModule
+    MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule
   ],
-  providers: [CategoryService],
+  providers: [CategoryService, JobOffersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

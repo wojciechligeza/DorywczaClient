@@ -1,0 +1,25 @@
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nazwa pracy </th>
+      <td mat-cell *matCellDef="let offer"> {{offer.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="salary">
+      <th mat-header-cell *matHeaderCellDef> Wynagrodzenie </th>
+      <td mat-cell *matCellDef="let offer"> {{offer.salary}} </td>
+    </ng-container>
+    <ng-container matColumnDef="timeFrame">
+      <th mat-header-cell *matHeaderCellDef> Przedział czasowy </th>
+      <td mat-cell *matCellDef="let offer"> {{offer.timeFrame}} </td>
+    </ng-container>
+    <ng-container matColumnDef="amountOfPlaces">
+      <th mat-header-cell *matHeaderCellDef> Ilość miejsc </th>
+      <td mat-cell *matCellDef="let offer"> {{offer.amountOfPlaces}} </td>
+    </ng-container>
+    <ng-container matColumnDef="state">
+       <th mat-header-cell *matHeaderCellDef> Status </th>
+       <td mat-cell *matCellDef="let offer"> {{(offer.state) ? 'Aktualna' : 'Nieaktualna'}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
