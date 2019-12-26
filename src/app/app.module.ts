@@ -12,6 +12,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
 import { JobOffersComponent } from './components/job-offers/job-offers.component';
 import { MoreDetailsComponent } from './components/more-details/more-details.component';
 import { EmployeeComponent } from './components/employee/employee.component';
+import { ApplyComponent } from './components/apply/apply.component';
 
 // services
 import { CategoryService } from './services/category.service';
@@ -32,7 +33,8 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDi
     CategoriesComponent,
     JobOffersComponent,
     MoreDetailsComponent,
-    EmployeeComponent
+    EmployeeComponent,
+    ApplyComponent
   ],
   imports: [
     BrowserModule,
