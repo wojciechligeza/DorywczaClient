@@ -1,0 +1,35 @@
+<h2 mat-dialog-title>Szczegóły oferty</h2>
+<section mat-dialog-content>
+  <h3>{{data.name}}</h3>
+  <mat-list>
+    <mat-list-item>
+      DATA DODANIA : {{data.addDate | date}}
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      WYNAGRODZENIE : {{data.salary}} zł
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      PRZEDZIAŁ CZASOWY : {{data.timeFrame}}
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      ILOŚĆ MIEJSC PRACY : {{data.amountOfPlaces}}
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      WYMAGANE KWALIFIKACJE : {{(data.qualificationIsRequired) ? 'Tak' : 'Nie'}}
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      OPIS : {{data.description}}
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item [ngStyle]="data.state ? { color: 'green' } : { color: 'red' }" >
+      STATUS : {{(data.state) ? 'Aktualna' : 'Nieaktualna'}}
+    </mat-list-item>
+  </mat-list>
+
+  <button mat-button (click)="close()">WRÓĆ</button>
+</section>

@@ -1,0 +1,44 @@
+h2
+{
+    text-align: center;
+}
+
+.form
+{
+    /* width:80%; */
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 5%;
+}
+
+.mat-form-field, .mat-checkbox
+{
+    width:60%;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.mat-radio-group, #radio-group-label
+{
+    display: flex;
+    flex-direction: column;
+    width:60%;
+    margin-top: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 2%;
+}
+
+.mat-radio-button
+{
+    margin: 2px;
+}
+
+.mat-raised-button
+{
+    margin-top: 5%;
+    margin-left: 40%;
+    margin-right: 40%;
+    margin-bottom: 5%;
+}

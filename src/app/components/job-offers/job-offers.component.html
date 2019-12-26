@@ -5,7 +5,7 @@
     </ng-container>
     <ng-container matColumnDef="salary">
       <th mat-header-cell *matHeaderCellDef> Wynagrodzenie </th>
-      <td mat-cell *matCellDef="let offer"> {{offer.salary}} </td>
+      <td mat-cell *matCellDef="let offer"> {{offer.salary}} zł</td>
     </ng-container>
     <ng-container matColumnDef="timeFrame">
       <th mat-header-cell *matHeaderCellDef> Przedział czasowy </th>
@@ -17,9 +17,21 @@
     </ng-container>
     <ng-container matColumnDef="state">
        <th mat-header-cell *matHeaderCellDef> Status </th>
-       <td mat-cell *matCellDef="let offer"> {{(offer.state) ? 'Aktualna' : 'Nieaktualna'}} </td>
+       <td mat-cell *matCellDef="let offer" [ngStyle]="offer.state ? { color: 'green' } : { color: 'red' }" > {{(offer.state) ? 'Aktualna' : 'Nieaktualna'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="moreDetails">
+      <th mat-header-cell *matHeaderCellDef> Szczegóły </th>
+      <td mat-cell *matCellDef="let offer">
+          <button (click)="moreDetails(offer)" mat-raised-button color="primary">ZOBACZ</button>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="apply">
+      <th *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef="let offer">
+          <button *ngIf="offer.state" mat-raised-button color="accent" routerLink="/{{offer.name}}/employee">APLIKUJ</button>
+      </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
+    <tr mat-row *matRowDef="let row; columns: tableHeaders;"></tr>
   </table>

@@ -1,0 +1,47 @@
+<mat-card>
+  <h2>Formularz zgłoszeniowy</h2>
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+
+    <mat-form-field>
+      <input matInput placeholder="Imię i nazwisko" formControlName="name" />
+    </mat-form-field>
+
+    <label id="radio-group-label">Płeć : </label>
+    <mat-radio-group aria-labelledby="radio-group-label" formControlName="gender">
+      <mat-radio-button *ngFor="let displayedGender of displayedGenders" [value]="displayedGender.value">
+        {{ displayedGender.display }}
+      </mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+      <input matInput placeholder="Wiek" formControlName="age" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Adres mailowy" formControlName="email">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Telefon kontaktowy" formControlName="phone">
+      <mat-hint>Musi zawierać prefiks krajowy, wzór : +48 000 000 000</mat-hint>
+      <mat-icon matSuffix>phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Kwalifikacje" formControlName="qualification">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Doświadczenie zawodowe" formControlName="experience">
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput placeholder="Uwagi do oferty" formControlName="comment">
+    </mat-form-field>
+
+    <mat-checkbox formControlName="agreementRodo">Zgoda na przetwarzanie danych osobowych - RODO</mat-checkbox>
+
+    <button mat-raised-button color="accent" [disabled]="!employeeForm.valid">APLIKUJ</button>
+
+  </form>
+</mat-card>
