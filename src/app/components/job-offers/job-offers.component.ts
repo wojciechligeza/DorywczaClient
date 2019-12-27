@@ -11,7 +11,6 @@ import { MoreDetailsComponent } from '../more-details/more-details.component';
 })
 export class JobOffersComponent implements OnInit {
 
-  jobOffers: Array<IJobOffer>;
   dataSource;
   tableHeaders: string[] = ['name', 'salary', 'timeFrame', 'amountOfPlaces', 'state', 'moreDetails', 'apply'];
 

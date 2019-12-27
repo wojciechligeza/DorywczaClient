@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { EmployeeService } from 'src/app/services/employee.service';
 import { IGender } from 'src/app/interfaces/igender';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -23,12 +24,13 @@ export class EmployeeComponent {
   ];
 
   regEx = {
-    "email" : "^[a-z\d]+[\w\d.-]*@(?:[a-z\d]+[a-z\d-]+\.){1,5}[a-z]{2,6}$",
+    "email" : "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$",
     "age" : "^[0-9]{2}$",
     "phone" : "^((\\+|00)48)?\\s?[0-9]{3}\\s?[0-9]{3}\\s?[0-9]{3}$"
   };
 
-  constructor(private service: EmployeeService) { }
+  constructor(private service: EmployeeService,
+              private router: Router) { }
 
   employeeForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -47,6 +49,7 @@ export class EmployeeComponent {
     this.service.postEmployee(this.employeeForm.value).subscribe((data) => {
       console.log('Data - ', data);
     })
+    this.router.navigate(['/employee/apply']);
   }
 
 }

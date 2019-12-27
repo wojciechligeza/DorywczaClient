@@ -3,31 +3,31 @@
   <h3>{{data.name}}</h3>
   <mat-list>
     <mat-list-item>
-      DATA DODANIA : {{data.addDate | date}}
+      PŁEĆ : {{(data.gender==='K') ? 'Kobieta' : 'Meżczyzna'}}
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      WYNAGRODZENIE : {{data.salary}} zł
+      WIEK : {{data.age}}
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      PRZEDZIAŁ CZASOWY : {{data.timeFrame}}
+      ADRES MAILOWY : {{data.email}}
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      ILOŚĆ MIEJSC PRACY : {{data.amountOfPlaces}}
+      NUMER TELEFONU : {{data.phone}}
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      WYMAGANE KWALIFIKACJE : {{(data.qualificationIsRequired) ? 'Tak' : 'Nie'}}
+      KWALIFIKACJE ZAWODOWE : {{data.qualification}}
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
-      OPIS : {{data.description}}
+      DOŚWIADCZENIE ZAWODOWE : {{data.experience}}
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item [ngStyle]="data.state ? { color: 'green' } : { color: 'red' }" >
-      STATUS : {{(data.state) ? 'Aktualna' : 'Nieaktualna'}}
+    <mat-list-item>
+      UWAGI PRACOWNIKA DO OFERTY : {{data.comment}}
     </mat-list-item>
   </mat-list>
 

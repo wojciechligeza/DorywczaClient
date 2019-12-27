@@ -13,11 +13,14 @@ import { JobOffersComponent } from './components/job-offers/job-offers.component
 import { MoreDetailsComponent } from './components/more-details/more-details.component';
 import { EmployeeComponent } from './components/employee/employee.component';
 import { ApplyComponent } from './components/apply/apply.component';
+import { EmployerComponent } from './components/employer/employer.component';
+import { MoreInfoComponent } from './components/more-info/more-info.component';
 
 // services
 import { CategoryService } from './services/category.service';
 import { JobOffersService } from './services/job-offers.service';
 import { EmployeeService } from './services/employee.service';
+import { EmployerService } from './services/employer.service';
 
 // AngularMaterial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,7 +37,9 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDi
     JobOffersComponent,
     MoreDetailsComponent,
     EmployeeComponent,
-    ApplyComponent
+    ApplyComponent,
+    EmployerComponent,
+    MoreInfoComponent
   ],
   imports: [
     BrowserModule,
@@ -47,8 +52,8 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDi
     MatListModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatRadioModule,
     MatIconModule, MatCheckboxModule
   ],
-  entryComponents: [MoreDetailsComponent],
-  providers: [CategoryService, JobOffersService, EmployeeService],
+  entryComponents: [MoreDetailsComponent, MoreInfoComponent],
+  providers: [CategoryService, JobOffersService, EmployeeService, EmployerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

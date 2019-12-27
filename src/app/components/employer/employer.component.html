@@ -1,0 +1,31 @@
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef>Imię i nazwisko</th>
+    <td mat-cell *matCellDef="let employee">{{ employee.name }}</td>
+  </ng-container>
+  <ng-container matColumnDef="gender">
+    <th mat-header-cell *matHeaderCellDef>Płeć</th>
+    <td mat-cell *matCellDef="let employee">{{ (employee.gender==='K') ? 'Kobieta' : 'Meżczyzna' }}</td>
+  </ng-container>
+  <ng-container matColumnDef="age">
+    <th mat-header-cell *matHeaderCellDef>Wiek</th>
+    <td mat-cell *matCellDef="let employee">{{ employee.age }}</td>
+  </ng-container>
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef>Adres email</th>
+    <td mat-cell *matCellDef="let employee">{{ employee.email }}</td>
+  </ng-container>
+  <ng-container matColumnDef="phone">
+    <th mat-header-cell *matHeaderCellDef>Numer telefonu</th>
+    <td mat-cell *matCellDef="let employee">{{ employee.phone }}</td>
+  </ng-container>
+  <ng-container matColumnDef="moreInfo">
+    <th mat-header-cell *matHeaderCellDef>Szczegóły</th>
+    <td mat-cell *matCellDef="let employee">
+      <button (click)="moreInfo(employee)" mat-raised-button color="primary">ZOBACZ</button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
+  <tr mat-row *matRowDef="let row; columns: tableHeaders"></tr>
+</table>
