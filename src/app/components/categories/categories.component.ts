@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ICategory } from '../../interfaces/icategory';
-import { CategoryService } from '../../services/category.service';
+import { ICategory } from '@app/interfaces/icategory';
+import { CategoryService } from '@app/services/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -9,15 +9,15 @@ import { CategoryService } from '../../services/category.service';
 })
 export class CategoriesComponent implements OnInit {
 
-  categories: Array<ICategory>;
-
   constructor(private service: CategoryService) { }
 
-  ngOnInit() {
-    this.service.getCategories().subscribe((data: Array<ICategory>) => {
-      console.log('Result - ' + data);
-      this.categories = data;
-    })
-  }
+  private categories: Array<ICategory>;
 
+  ngOnInit(): void {
+    this.service.getCategories()
+      .subscribe((data: Array<ICategory>) => this.categories = data,
+                  error => {
+                    console.log(error);
+                  });
+  }
 }

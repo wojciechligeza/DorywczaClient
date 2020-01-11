@@ -1,0 +1,86 @@
+<mat-card class="add-job-offers-card">
+    <h2>Dodaj ofertę pracy</h2>
+    <form [formGroup]="finalOfferForm" (ngSubmit)="onSubmit()">
+    <mat-horizontal-stepper labelPosition="bottom" #stepper>
+        <mat-step [stepControl]="firstOfferForm">
+            <form [formGroup]="firstOfferForm">
+                <ng-template matStepLabel>Wypełnij dane dotyczące oferty</ng-template>
+                <mat-form-field>
+                    <input matInput placeholder="Nazwa oferty pracy" formControlName="name" required>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <input matInput [matDatepicker]="fromPicker" placeholder="Data rozpoczęcia pracy" formControlName="timeFrameFrom" required>
+                    <mat-datepicker-toggle matSuffix [for]="fromPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #fromPicker></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="toPicker" placeholder="Data zakończenia pracy" formControlName="timeFrameTo" required>
+                    <mat-datepicker-toggle matSuffix [for]="toPicker"></mat-datepicker-toggle>
+                    <mat-datepicker #toPicker></mat-datepicker>
+                  </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-slider matInput formControlName="amountOfPlaces" thumbLabel min="1" max="20" step="1" tickInterval="1" required></mat-slider>
+                    <mat-label>Ilość miejsc pracy</mat-label>
+                    <textarea matInput hidden></textarea>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-label>Wybierz kategorię</mat-label>
+                    <mat-select formControlName="categoryId">
+                    <mat-option *ngFor="let displayedOffer of displayedOffers" [value]="displayedOffer.value">
+                        {{displayedOffer.display}}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="mat-step-button">
+                    <button mat-button matStepperNext>DALEJ</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step [stepControl]="secondOfferForm">
+            <form [formGroup]="secondOfferForm">
+                <ng-template matStepLabel>
+                    Wypełnij szczegółowe dane.<br />
+                    Jeśli wymagane są kwalifikacje opisz je.
+                </ng-template>
+                <mat-form-field>
+                    <mat-slide-toggle matInput formControlName="qualificationIsRequired" optional>Wymagane kwalifikacje</mat-slide-toggle>
+                    <textarea matInput hidden></textarea>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <input matInput placeholder="Opis" formControlName="description" optional>
+                </mat-form-field>
+                <br />
+                <mat-form-field>
+                    <mat-slider matInput formControlName="salary" thumbLabel [displayWith]="formatLabel" min="50" max="1000" step="10" tickInterval="1" optional></mat-slider>
+                    <mat-label>Wynagrodzenie</mat-label>
+                    <textarea matInput hidden></textarea>
+                </mat-form-field>
+                <div class="mat-step-button">
+                    <button mat-button matStepperPrevious>WRÓĆ</button>
+                    <button mat-button matStepperNext>DALEJ</button>
+                </div>
+            </form>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>ZROBIONE</ng-template>
+            <div id="done">
+                Przed dodaniem oferty przejrzyj wszystkie dane, by zgadzały się ze stanem rzeczywistym.
+                <div id="submitted" *ngIf="submitted">
+                    <br /><br />
+                    Twoja oferta została dodana.
+                </div>
+            </div>
+            <div class="mat-step-button">
+                <button mat-button matStepperPrevious>WRÓĆ</button>
+                <button mat-button (click)="stepper.reset()">WYMAŻ</button>
+                <button mat-raised-button color="accent" [disabled]="finalOfferForm.invalid">DODAJ OFERTĘ</button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+    </form>
+</mat-card>

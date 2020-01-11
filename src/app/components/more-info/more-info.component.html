@@ -2,6 +2,12 @@
 <section mat-dialog-content>
   <h3>{{data.name}}</h3>
   <mat-list>
+    <div *ngIf="offer">
+      <mat-list-item>
+        OFERTA PRACY : {{offer.name}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
     <mat-list-item>
       PŁEĆ : {{(data.gender==='K') ? 'Kobieta' : 'Meżczyzna'}}
     </mat-list-item>
@@ -18,17 +24,23 @@
       NUMER TELEFONU : {{data.phone}}
     </mat-list-item>
     <mat-divider></mat-divider>
-    <mat-list-item>
-      KWALIFIKACJE ZAWODOWE : {{data.qualification}}
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      DOŚWIADCZENIE ZAWODOWE : {{data.experience}}
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-      UWAGI PRACOWNIKA DO OFERTY : {{data.comment}}
-    </mat-list-item>
+    <div *ngIf="!(data.qualification === '')">
+      <mat-list-item>
+        KWALIFIKACJE ZAWODOWE : {{data.qualification}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+    <div *ngIf="!(data.experience === '')">
+      <mat-list-item>
+        DOŚWIADCZENIE ZAWODOWE : {{data.experience}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
+    <div *ngIf="!(data.comment === '')">
+      <mat-list-item>
+        UWAGI PRACOWNIKA DO OFERTY : {{data.comment}}
+      </mat-list-item>
+    </div>
   </mat-list>
 
   <button mat-button (click)="close()">WRÓĆ</button>

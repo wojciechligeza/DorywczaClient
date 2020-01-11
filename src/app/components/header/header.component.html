@@ -1,9 +1,10 @@
 <header>
     <nav>
       <mat-toolbar color="primary">
-        <button mat-button routerLink="/">KATEGORIE</button>
+        <button mat-button routerLink="/">STRONA GŁÓWNA</button>
         <span style="flex: 1 1 auto"></span>
-        <button mat-button routerLink="/employers">PRACODAWCY</button>
+        <button *ngIf="currentUser" mat-button (click)="logout()">WYLOGUJ</button>
+        <button mat-button (click)="onClick()" routerLink="/employers/dashboard/{{usernameLink}}">PRACODAWCY</button>
       </mat-toolbar>
     </nav>
 </header>

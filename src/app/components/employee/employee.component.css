@@ -5,7 +5,6 @@ h2
 
 .form
 {
-    /* width:80%; */
     margin-top: 5%;
     margin-left: 20%;
     margin-right: 20%;
@@ -14,20 +13,20 @@ h2
 
 .mat-form-field, .mat-checkbox
 {
-    width:60%;
     margin-left: 20%;
     margin-right: 20%;
+    width:60%;
 }
 
 .mat-radio-group, #radio-group-label
 {
-    display: flex;
-    flex-direction: column;
-    width:60%;
     margin-top: 2%;
     margin-left: 20%;
     margin-right: 20%;
     margin-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    width:60%;
 }
 
 .mat-radio-button

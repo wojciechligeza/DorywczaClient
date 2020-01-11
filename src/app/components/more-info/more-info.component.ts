@@ -1,6 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { IEmployee } from 'src/app/interfaces/iemployee';
+import { IEmployee } from '@app/interfaces/iemployee';
+import { EmployeeService } from '@app/services/employee.service';
+import { IJobOffer } from '@app/interfaces/ijob-offer';
 
 @Component({
   selector: 'app-more-info',
@@ -9,11 +11,23 @@ import { IEmployee } from 'src/app/interfaces/iemployee';
 })
 export class MoreInfoComponent {
 
+  private offer: IJobOffer;
+
   constructor(private dialogRef: MatDialogRef<MoreInfoComponent>,
-              @Inject(MAT_DIALOG_DATA) private data: IEmployee) { }
+              private employeeService: EmployeeService,
+              @Inject(MAT_DIALOG_DATA) private data: IEmployee) {
 
-close(): void {
-  this.dialogRef.close();
-}
+    this.employeeService.getEmployee(this.data.employeeId)
+      .subscribe((result: IEmployee) => {
+                  result.jobOfferEmployees.map(a => this.offer = a.jobOffer);
+                  console.log(this.offer);
+                },
+                  error => {
+                  console.log(error);
+                  });
+  }
 
+  close(): void {
+    this.dialogRef.close();
+  }
 }

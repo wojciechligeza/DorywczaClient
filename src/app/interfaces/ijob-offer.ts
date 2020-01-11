@@ -1,3 +1,7 @@
+import { ICategory } from './icategory';
+import { IEmployer } from './iemployer';
+import { IJobOfferEmployee } from './ijob-offer-employee';
+
 export interface IJobOffer {
     jobOfferId: number;
     name: string;
@@ -8,7 +12,10 @@ export interface IJobOffer {
     addDate: any;
     qualificationIsRequired: boolean;
     state: boolean;
-    category?: any;
-    employee?: any;
-    employer?: any;
+
+    categoryId?: number;
+    category?: ICategory;
+    employerId?: number;
+    employer?: IEmployer;
+    jobOfferEmployees?: Array<IJobOfferEmployee>;
 }

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 // components
@@ -15,6 +15,10 @@ import { EmployeeComponent } from './components/employee/employee.component';
 import { ApplyComponent } from './components/apply/apply.component';
 import { EmployerComponent } from './components/employer/employer.component';
 import { MoreInfoComponent } from './components/more-info/more-info.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { DashBoardComponent } from './components/dash-board/dash-board.component';
+import { AddJobOffersComponent } from './components/add-job-offers/add-job-offers.component';
 
 // services
 import { CategoryService } from './services/category.service';
@@ -22,11 +26,15 @@ import { JobOffersService } from './services/job-offers.service';
 import { EmployeeService } from './services/employee.service';
 import { EmployerService } from './services/employer.service';
 
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+
 // AngularMaterial
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDialogModule,
          MatListModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatRadioModule,
-         MatIconModule, MatCheckboxModule } from '@angular/material';
+         MatIconModule, MatCheckboxModule, ErrorStateMatcher, MatSidenavModule, MatStepperModule,
+         MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE, MatSliderModule, MatSlideToggleModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -39,7 +47,11 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDi
     EmployeeComponent,
     ApplyComponent,
     EmployerComponent,
-    MoreInfoComponent
+    MoreInfoComponent,
+    LoginComponent,
+    RegisterComponent,
+    DashBoardComponent,
+    AddJobOffersComponent
   ],
   imports: [
     BrowserModule,
@@ -50,10 +62,19 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDi
     BrowserAnimationsModule,
     MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDialogModule,
     MatListModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatRadioModule,
-    MatIconModule, MatCheckboxModule
+    MatIconModule, MatCheckboxModule, MatSidenavModule, MatStepperModule, MatDatepickerModule,
+    MatNativeDateModule, MatSliderModule, MatSlideToggleModule
   ],
   entryComponents: [MoreDetailsComponent, MoreInfoComponent],
-  providers: [CategoryService, JobOffersService, EmployeeService, EmployerService],
+  providers: [
+
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+
+    CategoryService, JobOffersService, EmployeeService, EmployerService, ErrorStateMatcher,
+    MatDatepickerModule
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

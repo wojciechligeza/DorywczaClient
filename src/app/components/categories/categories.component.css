@@ -1,7 +1,7 @@
 #logo
 {
-    width: 74%;
     margin: 2% 10% 2% 10%;
+    width: 80%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, .5);
 }
 .category-nav
@@ -12,14 +12,14 @@
 
 .category-card
 {
-    width: 24%;
-    margin: 6% 10% 2% 10%;
+    margin: 2% 10% 2% 10%;
+    min-width: 30%;
 }
 
 .category-card-image
 {
-    width:20%;
     margin: 10% 20% 10% 40%;
+    width:20%;
 }
 
 .category-card-content

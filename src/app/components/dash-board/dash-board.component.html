@@ -1,0 +1,25 @@
+<section>
+  <nav class="dashboard-nav">
+      <mat-drawer-container class="dashboard-container" autosize>
+
+        <mat-drawer #drawer class="dashboard-sidenav" mode="side">
+          <h4>OPCJE</h4>
+          <button mat-raised-button routerLink="employees">Zarządzanie pracownikami</button>
+          <br/><br/>
+          <button mat-raised-button routerLink="addJobOffers">Dodawanie oferty pracy</button>
+        </mat-drawer>
+
+        <div class="dashboard-sidenav-content">
+            <article id ="header">
+                <h3>Panel sterowania</h3>
+                <p>Zarządzaj pracownikami oraz ofertami pracy</p>
+                <button mat-button (click)="drawer.toggle(); onClick()">
+                  <div *ngIf="active ; then thenBlock else elseBlock"></div>
+                  <ng-template #thenBlock>POKAŻ OPCJE</ng-template>
+                  <ng-template #elseBlock>UKRYJ OPCJE</ng-template>
+                </button>
+            </article>
+        </div>
+      </mat-drawer-container>
+  </nav>
+</section>

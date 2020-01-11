@@ -3,7 +3,11 @@
   <h3>{{data.name}}</h3>
   <mat-list>
     <mat-list-item>
-      DATA DODANIA : {{data.addDate | date}}
+      PRACODAWCA : {{employer?.companyName | titlecase }}
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item>
+      DATA DODANIA : {{data.addDate | date:'dd/MM/yyyy'}}
     </mat-list-item>
     <mat-divider></mat-divider>
     <mat-list-item>
@@ -22,12 +26,17 @@
       WYMAGANE KWALIFIKACJE : {{(data.qualificationIsRequired) ? 'Tak' : 'Nie'}}
     </mat-list-item>
     <mat-divider></mat-divider>
+    <div *ngIf="!(data.description === '')">
+      <mat-list-item>
+        OPIS : {{data.description}}
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </div>
     <mat-list-item>
-      OPIS : {{data.description}}
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item [ngStyle]="data.state ? { color: 'green' } : { color: 'red' }" >
-      STATUS : {{(data.state) ? 'Aktualna' : 'Nieaktualna'}}
+      STATUS : &nbsp;
+      <span [ngStyle]="data.state ? { color: 'green' } : { color: 'red' }">
+        {{ (data.state) ? 'Aktualna' : 'Nieaktualna' }}
+      </span>
     </mat-list-item>
   </mat-list>
 

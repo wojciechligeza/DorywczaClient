@@ -1,3 +1,5 @@
+import { IJobOfferEmployee } from './ijob-offer-employee';
+
 export interface IEmployee {
     employeeId: number;
     name: string;
@@ -9,5 +11,6 @@ export interface IEmployee {
     experience: string;
     comment: string;
     agreementRodo: boolean;
-    jobOffers?: any;
+
+    jobOfferEmployees?: Array<IJobOfferEmployee>;
 }

@@ -14,29 +14,38 @@
     </mat-radio-group>
 
     <mat-form-field>
-      <input matInput placeholder="Wiek*" formControlName="age" />
+      <input matInput placeholder="Wiek*" formControlName="age" [errorStateMatcher]="errorMatcher" />
+      <mat-error *ngIf="employeeForm.get('age').hasError('pattern')">
+        Wiek jest niepoprawny
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Adres mailowy*" formControlName="email">
+      <input matInput placeholder="Adres mailowy*" formControlName="email" [errorStateMatcher]="errorMatcher" />
+      <mat-error *ngIf="employeeForm.get('email').hasError('email')">
+        Adres mailowy jest niepoprawny
+      </mat-error>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Telefon kontaktowy*" formControlName="phone">
-      <mat-hint>Musi zawierać prefiks krajowy, wzór : +48 000 000 000</mat-hint>
+      <span matPrefix>+48 &nbsp;</span>
+      <input matInput placeholder="Telefon kontaktowy*" formControlName="phone" />
+      <mat-error *ngIf="employeeForm.get('phone').hasError('pattern')">
+        Numer telefonu jest niepoprawny
+      </mat-error>
       <mat-icon matSuffix>phone</mat-icon>
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Kwalifikacje" formControlName="qualification">
+      <input matInput placeholder="Kwalifikacje" formControlName="qualification" />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Doświadczenie zawodowe" formControlName="experience">
+      <input matInput placeholder="Doświadczenie zawodowe" formControlName="experience" />
     </mat-form-field>
 
     <mat-form-field>
-      <input matInput placeholder="Uwagi do oferty" formControlName="comment">
+      <input matInput placeholder="Uwagi do oferty" formControlName="comment" />
     </mat-form-field>
 
     <mat-checkbox formControlName="agreementRodo">Zgoda na przetwarzanie danych osobowych - RODO*</mat-checkbox>

@@ -1,0 +1,16 @@
+<mat-card>
+    <h2>Logowanie</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+        <input matInput placeholder="Login" formControlName="username" />
+    </mat-form-field>
+    <mat-form-field>
+        <input type="password" matInput placeholder="Hasło" formControlName="password" />
+    </mat-form-field>
+    <button mat-raised-button color="accent" [disabled]="!loginForm.valid">
+        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+        ZALOGUJ
+    </button>
+    <button mat-button routerLink="/register">ZAREJESTRUJ</button>
+    </form>
+</mat-card>
