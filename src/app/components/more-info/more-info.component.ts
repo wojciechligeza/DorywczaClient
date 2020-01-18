@@ -11,7 +11,7 @@ import { IJobOffer } from '@app/interfaces/ijob-offer';
 })
 export class MoreInfoComponent {
 
-  private offer: IJobOffer;
+  public offer: IJobOffer;
 
   constructor(private dialogRef: MatDialogRef<MoreInfoComponent>,
               private employeeService: EmployeeService,

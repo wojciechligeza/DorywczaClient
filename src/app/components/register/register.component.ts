@@ -16,9 +16,9 @@ export class RegisterComponent implements OnInit {
               private userService: UserService,
               private authService: AuthService) { }
 
-  private loading = false;
+  public loading = false;
 
-  private registerForm = new FormGroup({
+  public registerForm = new FormGroup({
     firstName: new FormControl('', Validators.required),
     lastName: new FormControl('', Validators.required),
     username: new FormControl('', Validators.required),

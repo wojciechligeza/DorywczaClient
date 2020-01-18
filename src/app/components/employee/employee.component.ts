@@ -24,9 +24,9 @@ export class EmployeeComponent {
               private router: Router,
               private route: ActivatedRoute) { }
 
-  private errorMatcher = new ErrorMatcher();
+  public errorMatcher = new ErrorMatcher();
 
-  private displayedGenders: Array<IGender> = [
+  public displayedGenders: Array<IGender> = [
     {
       value: 'K',
       display: 'Kobieta'
@@ -37,13 +37,13 @@ export class EmployeeComponent {
     }
   ];
 
-  private regEx = {
+  public regEx = {
     "age" : "^[0-9]{2}$",
     "phone" : "^((\\+|00)48)?\\s?[0-9]{3}\\s?[0-9]{3}\\s?[0-9]{3}$"
   };
 
 
-  private employeeForm = new FormGroup({
+  public employeeForm = new FormGroup({
     name: new FormControl('', Validators.required),
     gender: new FormControl('', Validators.required),
     age: new FormControl('', [Validators.required, Validators.pattern(this.regEx.age)]),

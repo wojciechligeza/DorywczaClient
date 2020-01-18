@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class DashBoardComponent {
 
-  private active: boolean = true;
+  public active: boolean = true;
 
   onClick(): void {
     if (this.active) {

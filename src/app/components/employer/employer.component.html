@@ -1,3 +1,6 @@
+<mat-form-field class ="filter-input">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Szukaj">
+</mat-form-field>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef>Imię i nazwisko</th>
@@ -22,22 +25,32 @@
   <ng-container matColumnDef="moreInfo">
     <th mat-header-cell *matHeaderCellDef>Szczegóły</th>
     <td mat-cell *matCellDef="let employee">
-      <button (click)="moreInfo(employee)" mat-raised-button color="primary">ZOBACZ</button>
+      <button (click)="moreInfo(employee)" mat-raised-button color="primary">
+        <mat-icon class="hidden-md-up" color="white">zoom_out_map</mat-icon>
+        <span class="hidden-sm-down">ZOBACZ</span>
+      </button>
     </td>
   </ng-container>
   <ng-container matColumnDef="accept">
     <th mat-header-cell *matHeaderCellDef> </th>
     <td mat-cell *matCellDef="let employee">
-      <button (click)="accept(employee.employeeId)" mat-raised-button color="accent">AKCEPTUJ</button>
+      <button (click)="accept(employee.employeeId)" mat-raised-button color="accent">
+        <mat-icon class="hidden-md-up" color="white">check</mat-icon>
+        <span class="hidden-sm-down">AKCEPTUJ</span>
+      </button>
     </td>
   </ng-container>
   <ng-container matColumnDef="refuse">
     <th mat-header-cell *matHeaderCellDef> </th>
     <td mat-cell *matCellDef="let employee">
-      <button (click)="refuse(employee.employeeId)" mat-raised-button color="warn">ODRZUĆ</button>
+      <button (click)="refuse(employee.employeeId)" mat-raised-button color="warn">
+        <mat-icon class="hidden-md-up" color="white">close</mat-icon>
+        <span class="hidden-sm-down">ODRZUĆ</span>
+      </button>
     </td>
   </ng-container>
 
   <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
   <tr mat-row *matRowDef="let row; columns: tableHeaders"></tr>
 </table>
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[1, 5, 10, 25, 100]" ></mat-paginator>

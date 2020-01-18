@@ -11,7 +11,7 @@ import { IEmployer } from '@app/interfaces/iemployer';
 })
 export class MoreDetailsComponent {
 
-  private employer: IEmployer;
+  public employer: IEmployer;
 
   constructor(private dialogRef: MatDialogRef<MoreDetailsComponent>,
               private employerService: EmployerService,

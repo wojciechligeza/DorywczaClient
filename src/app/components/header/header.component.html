@@ -1,9 +1,15 @@
 <header>
     <nav>
       <mat-toolbar color="primary">
-        <button mat-button routerLink="/">STRONA GŁÓWNA</button>
+        <button mat-button routerLink="/">
+          <mat-icon class="hidden-md-up" color="white">home</mat-icon>
+          <span class="hidden-sm-down">STRONA GŁÓWNA</span>
+        </button>
         <span style="flex: 1 1 auto"></span>
-        <button *ngIf="currentUser" mat-button (click)="logout()">WYLOGUJ</button>
+        <button *ngIf="currentUser" mat-button (click)="logout()">
+          <mat-icon class="hidden-md-up" color="white">power_settings_new</mat-icon>
+          <span class="hidden-sm-down">WYLOGUJ</span>
+        </button>
         <button mat-button (click)="onClick()" routerLink="/employers/dashboard/{{usernameLink}}">PRACODAWCY</button>
       </mat-toolbar>
     </nav>

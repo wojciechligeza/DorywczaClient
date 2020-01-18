@@ -3,3 +3,20 @@ table
   margin: 2% 2% 2% 2%;
   width: 92%;
 }
+
+.filter-input
+{
+  margin-left: 2%;
+  margin-top: 2%;
+  padding: 4px;
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  width: 15%;
+  height: 70px;
+  border-top: none;
+  border-right: none;
+  border-bottom: none;
+  border-left: 1px solid violet;
+  border-radius: 10px;
+}

@@ -1,3 +1,6 @@
+<mat-form-field class ="filter-input">
+  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Szukaj">
+</mat-form-field>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Nazwa pracy </th>
@@ -22,7 +25,10 @@
     <ng-container matColumnDef="moreDetails">
       <th mat-header-cell *matHeaderCellDef> Szczegóły </th>
       <td mat-cell *matCellDef="let offer">
-          <button (click)="moreDetails(offer)" mat-raised-button color="primary">ZOBACZ</button>
+          <button (click)="moreDetails(offer)" mat-raised-button color="primary">
+            <mat-icon class="hidden-md-up" color="white">zoom_out_map</mat-icon>
+            <span class="hidden-sm-down">ZOBACZ</span>
+          </button>
       </td>
     </ng-container>
     <ng-container matColumnDef="apply">
@@ -35,3 +41,4 @@
     <tr mat-header-row *matHeaderRowDef="tableHeaders"></tr>
     <tr mat-row *matRowDef="let row; columns: tableHeaders;"></tr>
   </table>
+<mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[1, 5, 10, 25, 100]" ></mat-paginator>

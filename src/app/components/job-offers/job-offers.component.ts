@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IJobOffer } from '@app/interfaces/ijob-offer';
 import { JobOffersService } from '@app/services/job-offers.service';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { MoreDetailsComponent } from '../more-details/more-details.component';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs/operators';
@@ -13,12 +13,14 @@ import { map } from 'rxjs/operators';
 })
 export class JobOffersComponent implements OnInit {
 
-  private dataSource: any;
-  private tableHeaders: string[] = ['name', 'salary', 'timeFrame', 'amountOfPlaces', 'state', 'moreDetails', 'apply'];
-
   constructor(private route: ActivatedRoute,
               private service: JobOffersService,
               private dialog: MatDialog) { }
+
+  public dataSource: any;
+  public tableHeaders: string[] = ['name', 'salary', 'timeFrame', 'amountOfPlaces', 'state', 'moreDetails', 'apply'];
+
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
   ngOnInit(): void {
     const dataId: number = +this.route.snapshot.paramMap.get('categoryId');
@@ -29,10 +31,15 @@ export class JobOffersComponent implements OnInit {
       .subscribe((data: Array<IJobOffer>) => {
         console.log(data);
         this.dataSource = new MatTableDataSource<IJobOffer>(data as Array<IJobOffer>);
+        this.dataSource.paginator = this.paginator;
       },
       error => {
         console.log(error);
       });
+  }
+
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   moreDetails(offer: IJobOffer) {

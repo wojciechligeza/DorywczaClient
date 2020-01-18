@@ -19,10 +19,10 @@ export class AddJobOffersComponent implements OnInit {
               private employerService: EmployerService,
               private authService: AuthService) { }
 
-  private submitted: boolean = false;
-  private Id: number = 0;
+  public submitted: boolean = false;
+  public Id: number = 0;
 
-  private displayedOffers: Array<IOffer> = [
+  public displayedOffers: Array<IOffer> = [
     {
       value: 1,
       display: 'Prace budowlane'
@@ -41,7 +41,7 @@ export class AddJobOffersComponent implements OnInit {
     },
   ];
 
-  private firstOfferForm = new FormGroup({
+  public firstOfferForm = new FormGroup({
     name: new FormControl('', Validators.required),
     timeFrameFrom: new FormControl(JSON.stringify(new Date()), Validators.required),
     timeFrameTo: new FormControl(JSON.stringify(new Date()), Validators.required),
@@ -49,13 +49,13 @@ export class AddJobOffersComponent implements OnInit {
     categoryId: new FormControl(0, Validators.required)
   });
 
-  private secondOfferForm = new FormGroup({
+  public secondOfferForm = new FormGroup({
     qualificationIsRequired: new FormControl(false),
     description: new FormControl(''),
     salary: new FormControl(JSON.stringify(50))
   });
 
-  private finalOfferForm = new FormGroup({
+  public finalOfferForm = new FormGroup({
     name: this.firstOfferForm.get('name'),
     description: this.secondOfferForm.get('description'),
     salary: this.secondOfferForm.get('salary'),

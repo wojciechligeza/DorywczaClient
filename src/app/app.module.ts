@@ -1,3 +1,4 @@
+// base
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -26,15 +27,18 @@ import { JobOffersService } from './services/job-offers.service';
 import { EmployeeService } from './services/employee.service';
 import { EmployerService } from './services/employer.service';
 
+// helpers
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { PaginatorPL } from './helpers/paginator-pl';
 
-// AngularMaterial
+// Material Design
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDialogModule,
          MatListModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatRadioModule,
-         MatIconModule, MatCheckboxModule, ErrorStateMatcher, MatSidenavModule, MatStepperModule,
-         MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE, MatSliderModule, MatSlideToggleModule } from '@angular/material';
+         MatIconModule, MatCheckboxModule, MatSidenavModule, MatStepperModule,
+         ErrorStateMatcher, MatDatepickerModule, MatNativeDateModule, MAT_DATE_LOCALE,
+         MatSliderModule, MatSlideToggleModule, MatPaginatorModule, MatPaginatorIntl } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -58,12 +62,13 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDi
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule, FormsModule,
-    // AngularMaterial
+
+    // Material Design
     BrowserAnimationsModule,
     MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDialogModule,
     MatListModule, MatInputModule, MatFormFieldModule, MatSelectModule, MatRadioModule,
     MatIconModule, MatCheckboxModule, MatSidenavModule, MatStepperModule, MatDatepickerModule,
-    MatNativeDateModule, MatSliderModule, MatSlideToggleModule
+    MatNativeDateModule, MatSliderModule, MatSlideToggleModule, MatPaginatorModule
   ],
   entryComponents: [MoreDetailsComponent, MoreInfoComponent],
   providers: [
@@ -71,8 +76,10 @@ import { MatButtonModule, MatCardModule, MatToolbarModule, MatTableModule, MatDi
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MatPaginatorIntl, useClass: PaginatorPL},
 
-    CategoryService, JobOffersService, EmployeeService, EmployerService, ErrorStateMatcher,
+    CategoryService, JobOffersService, EmployeeService, EmployerService,
+    ErrorStateMatcher,
     MatDatepickerModule
   ],
   bootstrap: [AppComponent]

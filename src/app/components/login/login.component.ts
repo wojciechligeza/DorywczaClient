@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
 
   public returnUrl: string;
 
-  private loading = false;
+  public loading = false;
 
-  private loginForm = new FormGroup({
+  public loginForm = new FormGroup({
     username: new FormControl('', Validators.required),
     password: new FormControl('', [Validators.required, Validators.minLength(5)])
   });

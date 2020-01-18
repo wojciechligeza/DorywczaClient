@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { IEmployee } from '@app/interfaces/iemployee';
 import { EmployeeService } from '@app/services/employee.service';
-import { MatTableDataSource, MatDialog } from '@angular/material';
+import { MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { MoreInfoComponent } from '../more-info/more-info.component';
 import { AuthService } from '@app/services/auth.service';
 import { Router } from '@angular/router';
@@ -18,8 +18,10 @@ export class EmployerComponent implements OnInit {
               private router: Router,
               private dialog: MatDialog) { }
 
-  private dataSource: any;
-  private tableHeaders: string[] = ['name', 'gender', 'age', 'email', 'phone', 'moreInfo', 'accept', 'refuse'];
+  public dataSource: any;
+  public tableHeaders: string[] = ['name', 'gender', 'age', 'email', 'phone', 'moreInfo', 'accept', 'refuse'];
+
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
 
   ngOnInit(): void {
     const id = this.authService.currentUserValue.id;
@@ -27,10 +29,15 @@ export class EmployerComponent implements OnInit {
     this.employeeService.getEmployeesForEmployer(id, 'forEmployer').subscribe((data: Array<IEmployee>) => {
       console.log(data);
       this.dataSource = new MatTableDataSource<IEmployee>(data as Array<IEmployee>);
+      this.dataSource.paginator = this.paginator;
     },
     error => {
       console.log(error);
     });
+  }
+
+  applyFilter(filterValue: string){
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   moreInfo(employee: IEmployee) {
