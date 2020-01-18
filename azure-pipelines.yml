@@ -21,11 +21,14 @@ steps:
     ng build --prod
   displayName: 'npm install and build'
 
-- task: ArchiveFiles@1
-  displayName: 'Archive files '
+- task: ArchiveFiles@2
+  displayName: 'Archive Files'
   inputs:
-    rootFolder: 'dist/'
-    includeRootFolder: false
+    rootFolderOrFile: '/dist'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
 
 - task: CopyFiles@2
   displayName: 'Copy File to: $(TargetFolder)'
