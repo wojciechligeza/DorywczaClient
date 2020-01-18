@@ -15,7 +15,7 @@ export class MoreDetailsComponent {
 
   constructor(private dialogRef: MatDialogRef<MoreDetailsComponent>,
               private employerService: EmployerService,
-              @Inject(MAT_DIALOG_DATA) private data: IJobOffer) {
+              @Inject(MAT_DIALOG_DATA) public data: IJobOffer) {
 
     this.employerService.getEmployer(this.data.employerId)
       .subscribe((result: IEmployer) => {

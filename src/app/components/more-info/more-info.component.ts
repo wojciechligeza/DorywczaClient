@@ -15,7 +15,7 @@ export class MoreInfoComponent {
 
   constructor(private dialogRef: MatDialogRef<MoreInfoComponent>,
               private employeeService: EmployeeService,
-              @Inject(MAT_DIALOG_DATA) private data: IEmployee) {
+              @Inject(MAT_DIALOG_DATA) public data: IEmployee) {
 
     this.employeeService.getEmployee(this.data.employeeId)
       .subscribe((result: IEmployee) => {
