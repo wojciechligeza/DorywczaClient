@@ -1,0 +1,9 @@
+{
+  "$schema": "http://json.schemastore.org/web-manifest",
+  "short_name": "Dorywcza",
+  "name": "Portal Dorywcza - oferty pracy",
+  "description": "Portal dla osób szukających ofert pracy. Pracodawcom umożliwia zarządzanie ofertami oraz pracownikami",
+  "start_url": "https://dorywcza-client.azurewebsites.net/index.html",
+  "display": "standalone",
+  "orientation": "any"
+}

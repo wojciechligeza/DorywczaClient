@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  _baseURL: 'https://localhost:5001'
+  _baseURL: 'https://dorywcza.azurewebsites.net'
 };
 
 /*
