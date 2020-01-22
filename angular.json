@@ -22,16 +22,6 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              {
-                "glob": "index.js",
-                "input": "src/server/",
-                "output": "./"
-              },
-              {
-                "glob": "package.json",
-                "input": "src/server/",
-                "output": "./"
-              },
               "src/manifest.json"
             ],
             "styles": [
