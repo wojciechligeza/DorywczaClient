@@ -1,27 +1,47 @@
-# Dorywcza
+# DORYWCZA CLIENT
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.23.
+Client-side web app created with Angular 8, RxJS, Material Design and Bootstrap.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#run)
 
-## Code scaffolding
+## General info
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This project aims to provide a web app, which allows to search job offers.
+It provides dashboard for employers as well, where you can log in.
+With dashboard you can add new offer and manage employees, that applied for your offers.
 
-## Build
+## Technologies
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Dorywcza Client connects to Dorywcza API for fetching data, stored in SQL Database provided by Azure.
 
-## Running unit tests
+Programming tools that I use within this project are :
+- DEPENDENCY INJECTION:
+    As Angular Project hardly cannot exist without it, services that connect to API or authenticate user are injected into components.
+- FILTERING STREAM WITH RXJS:
+    To display exclusively this data that is currently needed, component filter stream data that arrives from server with RxJS pipe.
+- RESPONSIVE LAYOUT:
+    Not fully working, but I tried to make layout of this web app adjustable to all sizes of screen. I used Angular Material and Bootstap.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Setup
 
-## Running end-to-end tests
+To run this poject:
+- download or clone this repository,
+- install using npm required packages:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```
+npm install @angular/cli latest
+```
 
-## Further help
+- build this project:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+```
+ng build --prod
+```
+
+However project is already deployed by me on Azure and can be seen under the following [link](https://dorywcza-client.azurewebsites.net)
+
+It can occur that entering first time page-refresh is needed to see all content (performance of this page is not so good due to running on free-account Azure server).
