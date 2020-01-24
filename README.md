@@ -1,4 +1,4 @@
-# DORYWCZA CLIENT
+# DORYWCZA CLIENT [LINK](https://dorywcza-client.azurewebsites.net)
 
 Client-side web app created with Angular 8, RxJS, Material Design and Bootstrap.
 
@@ -6,7 +6,7 @@ Client-side web app created with Angular 8, RxJS, Material Design and Bootstrap.
 
 * [General info](#general-info)
 * [Technologies](#technologies)
-* [Setup](#run)
+* [Setup](#setup)
 
 ## General info
 
@@ -44,4 +44,4 @@ ng build --prod
 
 However project is already deployed by me on Azure and can be seen under the following [link](https://dorywcza-client.azurewebsites.net)
 
-It can occur that entering first time page-refresh is needed to see all content (performance of this page is not so good due to running on free-account Azure server).
+It can occurs that entering first time, page-refresh is needed to see all content (performance of this page is not so good due to running on free-account Azure server).
