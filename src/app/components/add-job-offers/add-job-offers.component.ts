@@ -7,6 +7,7 @@ import { IOffer } from '@app/interfaces/ioffer';
 import { IEmployer } from '@app/interfaces/iemployer';
 import { DatePipe } from '@angular/common';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-job-offers',
@@ -17,7 +18,8 @@ export class AddJobOffersComponent implements OnInit {
 
   constructor(private jobOfferService: JobOffersService,
               private employerService: EmployerService,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private router: Router) { }
 
   public submitted: boolean = false;
   public Id: number = 0;
@@ -115,6 +117,11 @@ export class AddJobOffersComponent implements OnInit {
 
     this.submitted = true;
     this.finalOfferForm.reset();
-    location.reload(true);
+    this.reload(this.router.url);
+  }
+
+  async reload(url: string): Promise<boolean> {
+    await this.router.navigateByUrl('/', { skipLocationChange: false });
+    return this.router.navigateByUrl(url);
   }
 }
