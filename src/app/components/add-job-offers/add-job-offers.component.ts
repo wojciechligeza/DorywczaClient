@@ -115,5 +115,6 @@ export class AddJobOffersComponent implements OnInit {
 
     this.submitted = true;
     this.finalOfferForm.reset();
+    location.reload(true);
   }
 }
