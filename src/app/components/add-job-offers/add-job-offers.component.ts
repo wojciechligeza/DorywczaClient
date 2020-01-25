@@ -108,16 +108,16 @@ export class AddJobOffersComponent implements OnInit {
           employerId: this.Id
     });
     console.log(this.finalOfferForm.value);
-
-    this.jobOfferService.postJobOffer(this.finalOfferForm.value)
-      .subscribe(() => console.log('JobOffer was sent'),
-                error => {
-                  console.log(error);
-                });
-
     this.submitted = true;
+    this.jobOfferService.postJobOffer(this.finalOfferForm.value)
+      .subscribe(() => {
+        console.log('JobOffer was sent'),
+        this.reload(this.router.url);
+      },
+        error => {
+          console.log(error);
+        });
     this.finalOfferForm.reset();
-    this.reload(this.router.url);
   }
 
   async reload(url: string): Promise<boolean> {
