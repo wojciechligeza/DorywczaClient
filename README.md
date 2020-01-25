@@ -1,4 +1,4 @@
-# DORYWCZA CLIENT [LINK](https://dorywcza-client.azurewebsites.net)
+# DORYWCZA CLIENT - [LINK](https://dorywcza-client.azurewebsites.net) TO AZURE WEBSITE
 
 Client-side web app created with Angular 8, RxJS, Material Design and Bootstrap.
 
@@ -20,7 +20,7 @@ Dorywcza Client connects to Dorywcza API for fetching data, stored in SQL Databa
 
 Programming tools that I use within this project are :
 - DEPENDENCY INJECTION:
-    As Angular Project hardly cannot exist without it, services that connect to API or authenticate user are injected into components.
+    As Angular Project hardly cannot exists without it, services that connect to API or authenticate user are injected into components.
 - FILTERING STREAM WITH RXJS:
     To display exclusively this data that is currently needed, component filter stream data that arrives from server with RxJS pipe.
 - RESPONSIVE LAYOUT:
