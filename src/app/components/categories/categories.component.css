@@ -8,12 +8,13 @@
 {
     display: flex;
     flex-flow: row wrap;
+    justify-content: space-around;
 }
 
 .category-card
 {
     margin: 2% 10% 2% 10%;
-    min-width: 30%;
+    width: 350px;
 }
 
 .category-card-image

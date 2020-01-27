@@ -3,3 +3,8 @@ p
     font-family: 'Courier New', Courier, monospace;
     font-size: 15px;
 }
+
+.mat-toolbar
+{
+    box-shadow: 8px 4px 8px 4px rgba(0, 0, 0, .5);
+}
