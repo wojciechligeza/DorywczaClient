@@ -5,6 +5,7 @@ import { MatTableDataSource, MatDialog, MatPaginator } from '@angular/material';
 import { MoreInfoComponent } from '../more-info/more-info.component';
 import { AuthService } from '@app/services/auth.service';
 import { Router } from '@angular/router';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'app-employer',
@@ -57,28 +58,18 @@ export class EmployerComponent implements OnInit {
     });
   }
 
-  accept(id: number) {
-    const status: string = 'yes';
-    this.employeeService.deleteEmployee(id, status).subscribe(data => {
-      console.log(data);
-      this.reload(this.router.url);
-    },
-    error => {
-      console.log(error);
-    });
-    location.reload(true);
-  }
+  accept = (id: number): void => this.removeEmployee(id, 'yes');
 
-  refuse(id: number) {
-    const status: string = 'no';
-    this.employeeService.deleteEmployee(id, status).subscribe(data => {
-      console.log(data);
-      this.reload(this.router.url);
-    },
-    error => {
-      console.log(error);
-    });
-    location.reload(true);
+  refuse = (id: number): void => this.removeEmployee(id, 'no');
+
+  removeEmployee(id: number, status: string): void {
+    this.employeeService.deleteEmployee(id, status)
+        .pipe(finalize(() => this.reload(this.router.url)))
+        .subscribe(data => console.log(data),
+                   error => { console.log(error);
+                  });
+
+    location.reload();
   }
 
   async reload(url: string): Promise<boolean> {
