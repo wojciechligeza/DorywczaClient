@@ -66,14 +66,17 @@ export class EmployerComponent implements OnInit {
     this.employeeService.deleteEmployee(id, status)
         .pipe(finalize(() => this.reload(this.router.url)))
         .subscribe(data => console.log(data),
-                   error => { console.log(error);
+                   error => {
+                     console.log(error);
                   });
 
-    location.reload();
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigateByUrl(this.router.url);
+    });
   }
 
   async reload(url: string): Promise<boolean> {
-    await this.router.navigateByUrl('/', { skipLocationChange: false });
+    await this.router.navigateByUrl('/', { skipLocationChange: true });
     return this.router.navigateByUrl(url);
   }
 }

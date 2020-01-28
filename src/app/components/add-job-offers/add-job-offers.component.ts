@@ -6,7 +6,7 @@ import { EmployerService } from '@app/services/employer.service';
 import { IOffer } from '@app/interfaces/ioffer';
 import { IEmployer } from '@app/interfaces/iemployer';
 import { DatePipe } from '@angular/common';
-import { map } from 'rxjs/operators';
+import { map, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Component({
@@ -110,13 +110,11 @@ export class AddJobOffersComponent implements OnInit {
     console.log(this.finalOfferForm.value);
     this.submitted = true;
     this.jobOfferService.postJobOffer(this.finalOfferForm.value)
-      .subscribe(() => {
-        console.log('JobOffer was sent'),
-        this.reload(this.router.url);
-      },
-        error => {
-          console.log(error);
-        });
+      .pipe(finalize(() => this.reload(this.router.url)))
+      .subscribe(() => console.log('JobOffer was sent'),
+                       error => {
+                         console.log(error);
+                       });
     this.finalOfferForm.reset();
   }
 
